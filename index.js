@@ -15,11 +15,24 @@ navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
     ]);
 
     socket.onopen = () => {
-        console.log({ event: 'onopen' })
+        console.log({ event: 'onopen' });
+
+        mediaRecorder.addEventListener('dataavailable', async (event) => {
+            if (event.data.size > 0 && socket.readyState == 1) {
+                socket.send(event.data);
+            }
+        })
+        mediaRecorder.start(250);
     }
     
     socket.onmessage = (message) => {
-        console.log({ event: 'onmessage', message })
+        // console.log({ event: 'onmessage', message });
+
+        const received = JSON.parse(message.data);
+        const transcript = received.channel.alternatives[0].transcript;
+        if (transcript && received.is_final) {
+            console.log(transcript);
+        }
     }
     
     socket.onclose = () => {
