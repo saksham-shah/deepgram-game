@@ -44,14 +44,27 @@ navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
     }
 });
 
-const width = 800;
-const height = 540;
+const CONSTANTS = {
+    WIDTH: 800,
+    HEIGHT: 540,
+    FLOOR: 500,
+    PLAYER_SIZE: 25
+}
+
+let player;
 
 function setup() {
-    createCanvas(width, height);
+    createCanvas(CONSTANTS.WIDTH, CONSTANTS.HEIGHT);
 
+    player = new Player(CONSTANTS.WIDTH / 2);
 }
 
 function draw() {
     background(200);
+
+    player.draw();
+}
+
+function getNewWord() {
+    return "random";
 }
