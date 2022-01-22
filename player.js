@@ -4,6 +4,7 @@ const CONTROLS = {
 
 class Player {
     constructor(x) {
+        this.targetX = x;
         this.x = x;
 
         this.words = ["left", "right", "shoot"];
@@ -12,21 +13,35 @@ class Player {
     processWord(word) {
         for (let i = 0; i < this.words.length; i++) {
             if (this.words[i] == word) {
-                this.update(i);
-                this.words[i] = getNewWord();
-                return;
+                this.applyControl(i);
+                // this.words[i] = getNewWord();
+
+                // TODO: REPLACE WORD HERE
+                return true;
             }
+        }
+
+        return false;
+    }
+
+    update() {
+        if (this.x < this.targetX) {
+            this.x += 5;
+        } else if (this.x > this.targetX) {
+            this.x -= 5;
         }
     }
 
-    update(control) {
+    applyControl(control) {
         switch (control) {
             case CONTROLS.LEFT:
                 console.log("left");
+                this.targetX -= 100;
                 break;
 
             case CONTROLS.RIGHT:
                 console.log("right");
+                this.targetX += 100;
                 break;
 
             case CONTROLS.SHOOT:

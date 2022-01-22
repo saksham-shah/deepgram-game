@@ -1,5 +1,7 @@
 console.log("Hello world");
 
+let player;
+
 navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
     console.log({ stream })
     // Further code goes here
@@ -32,6 +34,13 @@ navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
         const transcript = received.channel.alternatives[0].transcript;
         if (transcript) {
             console.log(transcript);
+
+            // Process words here
+            let words = transcript.split(" ");
+
+            for (let w of words) {
+                player.processWord(w);
+            }
         }
     }
     
@@ -51,8 +60,6 @@ const CONSTANTS = {
     PLAYER_SIZE: 25
 }
 
-let player;
-
 function setup() {
     createCanvas(CONSTANTS.WIDTH, CONSTANTS.HEIGHT);
 
@@ -62,6 +69,7 @@ function setup() {
 function draw() {
     background(200);
 
+    player.update();
     player.draw();
 }
 
