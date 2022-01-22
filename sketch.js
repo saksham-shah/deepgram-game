@@ -22,7 +22,7 @@ navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
                 socket.send(event.data);
             }
         })
-        mediaRecorder.start(250);
+        mediaRecorder.start(100);
     }
     
     socket.onmessage = (message) => {
@@ -30,7 +30,7 @@ navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
 
         const received = JSON.parse(message.data);
         const transcript = received.channel.alternatives[0].transcript;
-        if (transcript && received.is_final) {
+        if (transcript) {
             console.log(transcript);
         }
     }
@@ -42,4 +42,16 @@ navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
     socket.onerror = (error) => {
         console.log({ event: 'onerror', error })
     }
-})
+});
+
+const width = 800;
+const height = 540;
+
+function setup() {
+    createCanvas(width, height);
+
+}
+
+function draw() {
+    background(200);
+}
