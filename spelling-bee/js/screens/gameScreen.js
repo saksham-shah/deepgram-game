@@ -13,7 +13,7 @@ function GameScreen () {
         }
     ));
 
-    this.buttons.push(new Button(width/2 - 100, height /2 + 200 , 180, 50, "Start spelling",
+    this.buttons.push(new Button(width/2 - 100, height - 115 , 180, 50, "Start spelling",
         function() {
             gameScreen.game.recording = true;
 
@@ -23,31 +23,31 @@ function GameScreen () {
         }
     ));
 
-    this.buttons.push(new Button(width/2 + 100, height /2 + 200, 180, 50, "Repeat Word Please",
+    this.buttons.push(new Button(width/2 + 100, height - 115, 180, 50, "Repeat Word Please",
         function() {
             window.speechSynthesis.speak(new SpeechSynthesisUtterance(gameScreen.game.currentWord));
         }
     ));
 
-    this.buttons.push(new Button(width/2 - 300, height /2 + 270 , 180, 50, "Definition?",
+    this.buttons.push(new Button(width/2 - 300, height - 45 , 180, 50, "Definition?",
         function() {
             window.speechSynthesis.speak(new SpeechSynthesisUtterance("The definition is " + gameScreen.game.currentDefinition));
         }
     ));
 
-    this.buttons.push(new Button(width/2 - 100, height /2 + 270 , 180, 50, "Language of origin?",
+    this.buttons.push(new Button(width/2 - 100, height - 45 , 180, 50, "Language of origin?",
         function() {
             window.speechSynthesis.speak(new SpeechSynthesisUtterance(gameScreen.game.currentLanguageOfOrigin));
         }
     ));
 
-    this.buttons.push(new Button(width/2 + 100, height /2 + 270 , 180, 50, "Type of word?",
+    this.buttons.push(new Button(width/2 + 100, height - 45 , 180, 50, "Type of word?",
         function() {
             window.speechSynthesis.speak(new SpeechSynthesisUtterance(gameScreen.game.currentWordType));
         }
     ));
 
-    this.buttons.push(new Button(width/2 + 300, height /2 + 270 , 180, 50, "Example of sentence?",
+    this.buttons.push(new Button(width/2 + 300, height - 45 , 180, 50, "Example of sentence?",
         function() {
             window.speechSynthesis.speak(new SpeechSynthesisUtterance(gameScreen.game.currentSentenceExample));
         }
@@ -105,8 +105,10 @@ GameScreen.prototype.draw = function() {
     text("Word " + (this.game.wordIndex + 1) + " / " + this.game.numOfQuestions, width * 0.2, height/4);
 
     text("Score: " + this.game.score, width * 0.8, height / 4);
-    
 
+    fill(0, 45, 90);
+    rect(0, height - 160, width, 160);
+    
     pop();
 
     for (var i = 0; i < this.buttons.length; i++) {
