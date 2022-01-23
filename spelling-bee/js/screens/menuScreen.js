@@ -16,6 +16,12 @@ function MenuScreen () {
     
 }
 
+MenuScreen.prototype.mouseClicked = function() {
+    for (var i = 0; i < this.buttons.length; i++) {
+        this.buttons[i].mouseClicked();
+    }
+};
+
 MenuScreen.prototype.update = function() {
     for (var i = 0; i < this.buttons.length; i++) {
         this.buttons[i].update();

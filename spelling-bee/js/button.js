@@ -19,10 +19,12 @@ Button.prototype.update = function () {
         this.hover = false;
     }
 
-    if (this.hover && mouseIsPressed) {
+}
+
+Button.prototype.mouseClicked = function () {
+    if (this.hover) {
         this.onClick();
     }
-
 }
 
 Button.prototype.draw = function() {

@@ -51,6 +51,12 @@ GameScreen.prototype.start = function (difficulty) {
     screen = gameScreen;   
 }
 
+GameScreen.prototype.mouseClicked = function() {
+    for (var i = 0; i < this.buttons.length; i++) {
+        this.buttons[i].mouseClicked();
+    }
+};
+
 GameScreen.prototype.enterPressed = function () {
     this.game.enterPressed();
 }

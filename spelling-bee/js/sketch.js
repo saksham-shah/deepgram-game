@@ -1,7 +1,7 @@
 
 const CONSTANTS = {
-    WIDTH: 800,
-    HEIGHT: 540,
+    WIDTH: 1000,
+    HEIGHT: 640,
     FLOOR: 500,
     PLAYER_SIZE: 25
 }
@@ -9,6 +9,7 @@ const CONSTANTS = {
 
 function setup() {
     createCanvas(CONSTANTS.WIDTH, CONSTANTS.HEIGHT);
+    textFont('Verdana');
     menuScreen = new MenuScreen();
     gameScreen = new GameScreen();
     resultScreen = new ResultScreen();
@@ -21,6 +22,11 @@ function setup() {
 function draw() {
     screen.draw();
     screen.update();
+}
+
+function mouseClicked() {
+  screen.mouseClicked();
+  return false;
 }
 
 function keyReleased() {
