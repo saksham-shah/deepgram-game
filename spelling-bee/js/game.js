@@ -198,13 +198,19 @@ Game.prototype.draw = function () {
 
     textSize(50);
 
-    if (!this.guessing && this.guess != this.currentWord) {
-        text(this.currentWord, width / 2, height * 0.6);
+    if (!this.guessing) {
+        if (this.guess == this.currentWord) {
+            text("Correct!", width / 2, height * 0.6);
 
-        fill(255, 0, 0);
+            fill(0, 255, 0);
+        } else {
+            text(this.currentWord, width / 2, height * 0.6);
+
+            fill(255, 0, 0);
+        }
     }
 
-    text(this.guess, width/2, height / 2);
+    text(this.guess, width/2, height * 0.4);
     
     pop();
 };
