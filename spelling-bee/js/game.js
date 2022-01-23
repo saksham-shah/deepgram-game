@@ -10,7 +10,11 @@ function Game(difficulty, wordlist, numOfQuestions) {
 
     this.numOfQuestions = numOfQuestions;
 
-    this.wordlist = wordlist; // need to shuffle this
+    this.wordlist = shuffle(wordlist); // need to shuffle this
+
+    for (let i = 1; i < gameScreen.buttons.length; i++) {
+        gameScreen.buttons[i].enable();
+    }
 
     this.currentWord = null;
     this.currentDefinition = null;
@@ -57,7 +61,7 @@ Game.prototype.setup = function () {
                     'i': 4,
                     'j': 4,
                     'k': 4,
-                    'l': 10,
+                    'l': 7,
                     'm': 4,
                     'n': 10,
                     'o': 10,
@@ -161,6 +165,10 @@ Game.prototype.enterPressed = function () {
         this.guess = "";
 
         this.recording = false;
+
+        for (let i = 1; i < gameScreen.buttons.length; i++) {
+            gameScreen.buttons[i].enable();
+        }
     }
 }
 

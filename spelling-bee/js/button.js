@@ -11,7 +11,7 @@ function Button(x,y, width, height, text,onClick) {
     this.active = true;
 }
 
-Button.prototype.activate = function () {
+Button.prototype.enable = function () {
     this.active = true;
 }
 
