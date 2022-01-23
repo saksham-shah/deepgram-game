@@ -191,18 +191,19 @@ Game.prototype.draw = function () {
     textSize(20);
     fill(255);
     if (!this.guessing) {
-        text("Press enter", width/2, height * 0.75)
+        text("Press enter", width/2, height * 0.7)
     } else if (this.recording) {
-        text("Speak now", width/2, height * 0.75)
-    }
-
-    if (this.guessing || this.guess == this.currentWord) {
-        fill(255);
-    } else {
-        fill(255, 0, 0);
+        text("Speak now", width/2, height * 0.7)
     }
 
     textSize(50);
+
+    if (!this.guessing && this.guess != this.currentWord) {
+        text(this.currentWord, width / 2, height * 0.6);
+
+        fill(255, 0, 0);
+    }
+
     text(this.guess, width/2, height / 2);
     
     pop();
