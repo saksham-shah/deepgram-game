@@ -12,6 +12,7 @@ function setup() {
     textFont('Verdana');
     menuScreen = new MenuScreen();
     gameScreen = new GameScreen();
+    difficultyScreen = new DifficultyScreen ();
     resultScreen = new ResultScreen();
 
     screen = menuScreen;

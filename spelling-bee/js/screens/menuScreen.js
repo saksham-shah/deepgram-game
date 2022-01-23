@@ -4,7 +4,7 @@ function MenuScreen () {
     
     this.buttons.push(new Button(width/2 - 100, height /2 , 100, 50, "Play",
         function() {
-            gameScreen.start(0);
+            screen = difficultyScreen;
         }
     ));
     
