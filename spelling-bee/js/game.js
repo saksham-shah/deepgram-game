@@ -55,7 +55,7 @@ Game.prototype.setup = function () {
                     'c': 4,
                     'd': 6,
                     'e': 5,
-                    'f': 4,
+                    'f': 10,
                     'g': 4,
                     'h': 4,
                     'i': 4,
@@ -67,7 +67,7 @@ Game.prototype.setup = function () {
                     'o': 10,
                     'p': 7,
                     'q': 8,
-                    'r': 6,
+                    'r': 8,
                     's': 4,
                     't': 4,
                     'u': 4,
@@ -177,6 +177,7 @@ Game.prototype.processWord = function (w) {
     if (this.guess == this.currentWord) {
         this.guessing = false;
         this.score++;
+        window.speechSynthesis.speak(new SpeechSynthesisUtterance("Game over"));
     } else if (!this.currentWord.startsWith(this.guess)) {
         this.guessing = false;
     }
@@ -200,17 +201,17 @@ Game.prototype.draw = function () {
 
     if (!this.guessing) {
         if (this.guess == this.currentWord) {
-            text("Correct!", width / 2, height * 0.6);
+            text("Correct!", width / 2, height * 0.55);
 
             fill(0, 255, 0);
         } else {
-            text(this.currentWord, width / 2, height * 0.6);
+            text(this.currentWord, width / 2, height * 0.55);
 
             fill(255, 0, 0);
         }
     }
 
-    text(this.guess, width/2, height * 0.4);
+    text(this.guess, width/2, height * 0.45);
     
     pop();
 };
