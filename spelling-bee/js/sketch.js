@@ -43,6 +43,10 @@ function getNewWord() {
     return "random";
 }
 
+function preload() {
+  //myFont = loadFont('Ubuntu-Regular.ttf');
+}
+
 let words = [
     {
       "word": "auslaut",

@@ -29,6 +29,7 @@ MenuScreen.prototype.update = function() {
 };
 
 MenuScreen.prototype.draw = function() {
+    
     push();
     background(30,200,130);
     textSize(50);
