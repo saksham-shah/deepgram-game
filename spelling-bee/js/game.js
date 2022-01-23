@@ -7,6 +7,8 @@ function Game(difficulty) {
     this.guessing = false;
     this.timer = 0;
 
+    this.muted = 0;
+
     this.setup();
 }
 
@@ -36,7 +38,7 @@ Game.prototype.setup = function () {
                     'i': 4,
                     'j': 4,
                     'k': 4,
-                    'l': 4,
+                    'l': 10,
                     'm': 4,
                     'n': 10,
                     'o': 4,
@@ -79,14 +81,16 @@ Game.prototype.setup = function () {
     
             const received = JSON.parse(message.data);
             const transcript = received.channel.alternatives[0].transcript;
-            if (transcript) {
+            if (transcript && received.is_final && this.muted <= 0) {
                 console.log(transcript);
     
                 // Process words here
                 let words = transcript.split(" ");
     
                 for (let w of words) {
-                    this.processWord(w);
+                    if (w.length == 1) {
+                        this.processWord(w);
+                    }
                 }
             }
         }
@@ -110,7 +114,9 @@ Game.prototype.update = function () {
         this.guessing = true;
     }
 
-
+    if (this.muted > 0) {
+        this.muted--;
+    }
 };
 
 Game.prototype.processWord = function (w) {
@@ -142,4 +148,6 @@ Game.prototype.getWord = function () {
 
 Game.prototype.sayWord = function(word) {
     window.speechSynthesis.speak(new SpeechSynthesisUtterance(word));
+
+    this.muted = 60;
 }
