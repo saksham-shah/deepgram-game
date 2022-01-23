@@ -38,9 +38,9 @@ DifficultyScreen.prototype.draw = function() {
     text("How to play", width/2, height/4);
 
     textSize(20);
-    text("You will hear a word you have to spell.", width/2, height / 4 + 100)
+    text("You will hear a word you have to spell out loud.", width/2, height / 4 + 100)
     text("You may use the buttons on the screen to gain more information about your word.", width/2, height / 4 + 130)
-    text("When you are ready to spell, click the record button.", width/2, height / 4 + 160)
+    text("When you are ready to spell, click the \"Start spelling\" button.", width/2, height / 4 + 160)
     text("Good luck!", width/2, height / 4 + 220)
 
     rectMode(CORNER);

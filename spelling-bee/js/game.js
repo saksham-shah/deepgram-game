@@ -194,7 +194,7 @@ Game.prototype.draw = function () {
     if (!this.guessing) {
         text("Press Enter for the next word!", width/2, height * 0.7)
     } else if (this.recording) {
-        text("Speak now", width/2, height * 0.7)
+        text("Speak now 🎤", width/2, height * 0.7)
     }
 
     textSize(40);
