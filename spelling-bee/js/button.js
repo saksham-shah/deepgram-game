@@ -5,10 +5,11 @@ function Button(x,y, width, height, text,onClick) {
     this.height = height;
     this.onClick = onClick;
     this.bgCOLOR = color(0,0,0);
-    this.clickCOLOR = color(100,100,100);
+    this.clickCOLOR = color(40,40,100);
     this.disabledCOLOR = color(0,0,0,150);
     this.hover = false;
     this.active = true;
+    this.textSize = 13;
 }
 
 Button.prototype.enable = function () {
@@ -40,6 +41,7 @@ Button.prototype.mouseClicked = function () {
 }
 
 Button.prototype.draw = function() {
+    textSize(this.textSize);
     rectMode(CENTER);
     textAlign(CENTER, CENTER);
     fill(0,0,0);

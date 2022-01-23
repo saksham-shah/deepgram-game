@@ -1,13 +1,15 @@
 function MenuScreen () {
     this.buttons = [];
 
+    var playButton = new Button(width/2, height /2 , 200, 80, "Play!",
+    function() {
+        screen = difficultyScreen;
+    }
+    )
+    this.buttons.push(playButton);
     
-    this.buttons.push(new Button(width/2 - 100, height /2 , 100, 50, "Play",
-        function() {
-            screen = difficultyScreen;
-        }
-    ));
-    
+    playButton.textSize = 30;
+
 }
 
 MenuScreen.prototype.mouseClicked = function() {
@@ -28,10 +30,11 @@ MenuScreen.prototype.draw = function() {
     background(0,55,115);
     textSize(50);
     textAlign(CENTER);
-    text("SPELLING BEE TRAINER!", width/2, height / 4);
+    text("Spelling Hero!", width/2, height / 4);
     pop();
 
     for (var i = 0; i < this.buttons.length; i++) {
         this.buttons[i].draw();
     }
+
 }
