@@ -1,4 +1,4 @@
-function Game(difficulty) {
+function Game(difficulty, words) {
     this.difficulty = difficulty;
     this.wordIndex = 0;
     this.score = 0;
@@ -9,7 +9,15 @@ function Game(difficulty) {
 
     this.muted = 0;
 
+    this.words = words;
+
     this.setup();
+
+    let word = this.getWord();
+    this.sayWord(word);
+    this.currentWord = word;
+    this.guessing = true;
+    this.guess = "";
 }
 
 Game.prototype.setup = function () {
@@ -81,7 +89,7 @@ Game.prototype.setup = function () {
     
             const received = JSON.parse(message.data);
             const transcript = received.channel.alternatives[0].transcript;
-            if (transcript && received.is_final && this.muted <= 0) {
+            if (transcript && received.is_final && this.muted <= 0 && this.guessing) {
                 console.log(transcript);
     
                 // Process words here
@@ -107,25 +115,44 @@ Game.prototype.setup = function () {
 
 Game.prototype.update = function () {
     // IMPLEMENT nice timing and such
-    if (!this.guessing) {
-        let word = this.getWord();
-        this.sayWord(word);
-        this.currentWord = word;
-        this.guessing = true;
-    }
+    // if (!this.guessing) {
+    //     let word = this.getWord();
+    //     this.sayWord(word);
+    //     this.currentWord = word;
+    //     this.guessing = true;
+    //     this.guess = "";
+    // }
 
     if (this.muted > 0) {
         this.muted--;
     }
 };
 
+Game.prototype.enterPressed = function () {
+    if (!this.guessing) {
+        this.wordIndex += 1;
+
+        if (this.wordIndex == this.words) {
+            window.speechSynthesis.speak(new SpeechSynthesisUtterance("Game over"));
+            resultScreen.setGame(this);
+            screen = resultScreen;
+            return;
+        }
+
+        let word = this.getWord();
+        this.sayWord(word);
+        this.currentWord = word;
+        this.guessing = true;
+        this.guess = "";
+    }
+}
+
 Game.prototype.processWord = function (w) {
     this.guess += w;
     if (this.guess == this.currentWord) {
-
-    }
-    if (!this.currentWord.startsWith(this.guess)) {
-        this.wordIndex += 1;
+        this.guessing = false;
+        this.score++;
+    } else if (!this.currentWord.startsWith(this.guess)) {
         this.guessing = false;
     }
 }
@@ -134,8 +161,21 @@ Game.prototype.draw = function () {
     push();
     textAlign(CENTER);
 
-    textSize(50);
     //Draw Score
+
+    if (!this.guessing) {
+        textSize(20);
+        fill(255);
+        text("Press enter", width/2, height * 0.75)
+    }
+
+    if (this.guessing || this.guess == this.currentWord) {
+        fill(255);
+    } else {
+        fill(255, 0, 0);
+    }
+
+    textSize(50);
     text(this.guess, width/2, height / 2);
     
     pop();

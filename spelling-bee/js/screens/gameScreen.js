@@ -29,9 +29,12 @@ function GameScreen () {
 }
 
 GameScreen.prototype.start = function (difficulty) {
-    this.game = new Game(difficulty);
-    screen = gameScreen;
-    
+    this.game = new Game(difficulty, 5);
+    screen = gameScreen;   
+}
+
+GameScreen.prototype.enterPressed = function () {
+    this.game.enterPressed();
 }
 
 GameScreen.prototype.update = function() {
@@ -47,7 +50,7 @@ GameScreen.prototype.draw = function() {
     textSize(50);
     textAlign(CENTER);
 
-    switch(this.difficulty){
+    switch(this.game.difficulty){
         case 0: 
             text("Easy mode!", width/2, height / 4);
             break;
@@ -58,8 +61,10 @@ GameScreen.prototype.draw = function() {
 
     textSize(20);
     //Draw Score
-    text("Score: " + this.game.score + "/ " + this.game.wordIndex, 3 * width/4, height / 4);
+    text("Score: " + this.game.score, 3 * width/4, height / 4);
     
+    text("Word " + (this.game.wordIndex + 1) + " / " + this.game.words, width/4, height/4);
+
     pop();
 
     for (var i = 0; i < this.buttons.length; i++) {

@@ -15,6 +15,7 @@ function setup() {
     createCanvas(CONSTANTS.WIDTH, CONSTANTS.HEIGHT);
     menuScreen = new MenuScreen();
     gameScreen = new GameScreen();
+    resultScreen = new ResultScreen();
 
     screen = menuScreen;
 
@@ -24,8 +25,16 @@ function setup() {
 function draw() {
     screen.draw();
     screen.update();
+}
 
-
+function keyReleased() {
+    if (keyCode == ENTER) {
+        if (screen == gameScreen) {
+            gameScreen.enterPressed();
+        } else if (screen == resultScreen) {
+            screen = menuScreen;
+        }
+    }
 }
 
 function getNewWord() {
