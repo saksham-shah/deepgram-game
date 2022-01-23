@@ -1,21 +1,32 @@
-function Game(difficulty, words) {
+function Game(difficulty, wordlist, numOfQuestions) {
     this.difficulty = difficulty;
     this.wordIndex = 0;
     this.score = 0;
-    this.currentWord = null;
     this.guess = "";
     this.guessing = false;
     this.timer = 0;
 
     this.muted = 0;
 
-    this.words = words;
+    this.numOfQuestions = numOfQuestions;
+
+    this.wordlist = wordlist; // need to shuffle this
+
+    this.currentWord = null;
+    this.currentDefinition = null;
+    this.currentLanguageOfOrigin = null;
+    this.currentWordType = null;
+    this.currentSentenceExample = null;
 
     this.setup();
 
     let word = this.getWord();
     this.sayWord(word);
     this.currentWord = word;
+    this.currentDefinition = this.getDefinition();
+    this.currentLanguageOfOrigin = this.getLanguageOfOrigin();
+    this.currentWordType = this.getWordType();
+    this.currentSentenceExample = this.getSentenceExample();
     this.guessing = true;
     this.guess = "";
 }
@@ -132,7 +143,7 @@ Game.prototype.enterPressed = function () {
     if (!this.guessing) {
         this.wordIndex += 1;
 
-        if (this.wordIndex == this.words) {
+        if (this.wordIndex == this.numOfQuestions) {
             window.speechSynthesis.speak(new SpeechSynthesisUtterance("Game over"));
             resultScreen.setGame(this);
             screen = resultScreen;
@@ -142,6 +153,10 @@ Game.prototype.enterPressed = function () {
         let word = this.getWord();
         this.sayWord(word);
         this.currentWord = word;
+        this.currentDefinition = this.getDefinition();
+        this.currentLanguageOfOrigin = this.getLanguageOfOrigin();
+        this.currentWordType = this.getWordType();
+        this.currentSentenceExample = this.getSentenceExample();
         this.guessing = true;
         this.guess = "";
     }
@@ -182,9 +197,24 @@ Game.prototype.draw = function () {
 };
 
 Game.prototype.getWord = function () {
-    return "elephant";
+    return this.wordlist[this.wordIndex].word;
 };
 
+Game.prototype.getDefinition = function () {
+    return this.wordlist[this.wordIndex]["definition"];
+};
+
+Game.prototype.getLanguageOfOrigin = function () {
+    return this.wordlist[this.wordIndex]["language of origin"];
+};
+
+Game.prototype.getWordType = function () {
+    return this.wordlist[this.wordIndex]["word type"];
+};
+
+Game.prototype.getSentenceExample = function () {
+    return this.wordlist[this.wordIndex]["sentence usage"];
+};
 
 Game.prototype.sayWord = function(word) {
     window.speechSynthesis.speak(new SpeechSynthesisUtterance(word));

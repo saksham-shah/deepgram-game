@@ -1,7 +1,3 @@
-console.log("Hello world");
-
-
-
 
 const CONSTANTS = {
     WIDTH: 800,

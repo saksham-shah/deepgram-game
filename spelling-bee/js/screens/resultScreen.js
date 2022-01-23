@@ -41,7 +41,7 @@ ResultScreen.prototype.draw = function() {
 
     textSize(20);
     //Draw Score
-    text("Score: " + this.game.score + " / " + this.game.words, width/2, height / 2);
+    text("Score: " + this.game.score + " / " + this.game.numOfQuestions, width/2, height / 2);
     
 
     pop();
