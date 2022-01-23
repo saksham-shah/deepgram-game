@@ -41,7 +41,7 @@ Button.prototype.mouseClicked = function () {
 
 Button.prototype.draw = function() {
     rectMode(CENTER);
-    textAlign(CENTER);
+    textAlign(CENTER, CENTER);
     fill(0,0,0);
     if (this.active) {
         if (this.hover) {
