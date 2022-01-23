@@ -13,35 +13,51 @@ function GameScreen () {
         }
     ));
 
-    this.buttons.push(new Button(width/2 - 100, height /2 + 200, 180, 50, "Repeat Word Please",
+    this.buttons.push(new Button(width/2 - 100, height /2 + 200 , 180, 50, "Start spelling",
         function() {
-            window.speechSynthesis.speak(new SpeechSynthesisUtterance(gameScreen.game.currentWord));
+            gameScreen.game.recording = true;
         }
     ));
 
-    this.buttons.push(new Button(width/2 + 100, height /2 + 200 , 180, 50, "Definition?",
+    this.buttons.push(new Button(width/2 + 100, height /2 + 200, 180, 50, "Repeat Word Please",
         function() {
-            window.speechSynthesis.speak(new SpeechSynthesisUtterance("The definition is " + gameScreen.game.currentDefinition));
+            if (!gameScreen.game.recording && gameScreen.game.guessing) {
+                window.speechSynthesis.speak(new SpeechSynthesisUtterance(gameScreen.game.currentWord));
+            }
         }
     ));
 
-/*     this.buttons.push(new Button(width/2 + 100, height /2 + 200 , 180, 50, "Language of origin?",
+    this.buttons.push(new Button(width/2 - 300, height /2 + 270 , 180, 50, "Definition?",
         function() {
-            window.speechSynthesis.speak(new SpeechSynthesisUtterance(gameScreen.game.currentLanguageOfOrigin));
+            if (!gameScreen.game.recording && gameScreen.game.guessing) {
+                window.speechSynthesis.speak(new SpeechSynthesisUtterance("The definition is " + gameScreen.game.currentDefinition));
+            }
         }
     ));
 
-    this.buttons.push(new Button(width/2 + 100, height /2 + 200 , 180, 50, "Type of word?",
+    this.buttons.push(new Button(width/2 - 100, height /2 + 270 , 180, 50, "Language of origin?",
         function() {
-            window.speechSynthesis.speak(new SpeechSynthesisUtterance(gameScreen.game.currentLanguageOfOrigin));
+            if (!gameScreen.game.recording && gameScreen.game.guessing) {
+                window.speechSynthesis.speak(new SpeechSynthesisUtterance(gameScreen.game.currentLanguageOfOrigin));
+            }
         }
     ));
 
-    this.buttons.push(new Button(width/2 + 100, height /2 + 200 , 180, 50, "Example of sentence",
+    this.buttons.push(new Button(width/2 + 100, height /2 + 270 , 180, 50, "Type of word?",
         function() {
-            window.speechSynthesis.speak(new SpeechSynthesisUtterance(gameScreen.game.currentLanguageOfOrigin));
+            if (!gameScreen.game.recording && gameScreen.game.guessing) {
+                window.speechSynthesis.speak(new SpeechSynthesisUtterance(gameScreen.game.currentLanguageOfOrigin));
+            }
         }
-    )); */
+    ));
+
+    this.buttons.push(new Button(width/2 + 300, height /2 + 270 , 180, 50, "Example of sentence",
+        function() {
+            if (!gameScreen.game.recording && gameScreen.game.guessing) {
+                window.speechSynthesis.speak(new SpeechSynthesisUtterance(gameScreen.game.currentLanguageOfOrigin));
+            }
+        }
+    ));
 
     
 }

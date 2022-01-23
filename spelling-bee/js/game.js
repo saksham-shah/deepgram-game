@@ -6,7 +6,7 @@ function Game(difficulty, wordlist, numOfQuestions) {
     this.guessing = false;
     this.timer = 0;
 
-    this.muted = 0;
+    this.recording = false;
 
     this.numOfQuestions = numOfQuestions;
 
@@ -60,7 +60,7 @@ Game.prototype.setup = function () {
                     'l': 10,
                     'm': 4,
                     'n': 10,
-                    'o': 4,
+                    'o': 10,
                     'p': 7,
                     'q': 8,
                     'r': 6,
@@ -100,7 +100,7 @@ Game.prototype.setup = function () {
     
             const received = JSON.parse(message.data);
             const transcript = received.channel.alternatives[0].transcript;
-            if (transcript && received.is_final && this.muted <= 0 && this.guessing) {
+            if (transcript && received.is_final && this.recording && this.guessing) {
                 console.log(transcript);
     
                 // Process words here
@@ -159,6 +159,8 @@ Game.prototype.enterPressed = function () {
         this.currentSentenceExample = this.getSentenceExample();
         this.guessing = true;
         this.guess = "";
+
+        this.recording = false;
     }
 }
 
@@ -178,10 +180,12 @@ Game.prototype.draw = function () {
 
     //Draw Score
 
+    textSize(20);
+    fill(255);
     if (!this.guessing) {
-        textSize(20);
-        fill(255);
         text("Press enter", width/2, height * 0.75)
+    } else if (this.recording) {
+        text("Speak now", width/2, height * 0.75)
     }
 
     if (this.guessing || this.guess == this.currentWord) {
