@@ -197,8 +197,7 @@ Game.prototype.draw = function () {
         text("Speak now", width/2, height * 0.7)
     }
 
-    textSize(50);
-
+    textSize(40);
     if (!this.guessing) {
         if (this.guess == this.currentWord) {
             text("Correct!", width / 2, height * 0.55);
@@ -211,6 +210,7 @@ Game.prototype.draw = function () {
         }
     }
 
+    textSize(50);
     text(this.guess, width/2, height * 0.45);
     
     pop();

@@ -81,23 +81,31 @@ GameScreen.prototype.update = function() {
 GameScreen.prototype.draw = function() {
     push();
     background(0,55,115);
+
+    rectMode(CORNER);
+    fill(0, 30, 60);
+    rect(0, 0, width, 100);
+
+    fill(255);
     textSize(50);
-    textAlign(CENTER);
+    textAlign(CENTER, CENTER);
 
     switch(this.game.difficulty){
         case 0: 
-            text("Easy mode!", width/2, height / 4);
+            text("Easy mode", width/2, 50);
             break;
         default:
-            text("Hard mode!", width/2, height / 4);
+            text("Hard mode", width/2, 50);
             break;
     }
 
-    textSize(20);
+    textSize(30);
     //Draw Score
-    text("Score: " + this.game.score, 3 * width/4, height / 4);
+
+    text("Word " + (this.game.wordIndex + 1) + " / " + this.game.numOfQuestions, width * 0.2, height/4);
+
+    text("Score: " + this.game.score, width * 0.8, height / 4);
     
-    text("Word " + (this.game.wordIndex + 1) + " / " + this.game.numOfQuestions, width/4, height/4);
 
     pop();
 
