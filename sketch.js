@@ -60,6 +60,7 @@ const CONSTANTS = {
     PLAYER_SIZE: 25
 }
 
+
 function setup() {
     createCanvas(CONSTANTS.WIDTH, CONSTANTS.HEIGHT);
 
