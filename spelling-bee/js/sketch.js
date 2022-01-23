@@ -84,3 +84,41 @@ let words = [
       "sentence usage": "Among the rings is included a pendeloque attached to which a small ring for suspension"
     }
    ]
+
+let easyWords = [
+  {
+    "word": "possesses",
+    "definition": "to have or own something",
+    "language of origin": "Latin",
+    "word type": "verb",
+    "sentence usage": "Though she is sixty years old she possesses a strong body"
+  },
+  {
+    "word": "difficult",
+    "definition": "needing much effort or skill to accomplish",
+    "language of origin": "Latin",
+    "word type": "adjective",
+    "sentence usage": "Taking part in this spelling bee is a very difficult task"
+  },
+  {
+    "word": "elephant",
+    "definition": "an extremely large hairless and herbivorous mammal with a trunk and tusks",
+    "language of origin": "Greek",
+    "word type": "noun",
+    "sentence usage": "As the largest land animal in the world the elephant reaches heights of 11 feet"
+  },
+  {
+    "word": "decide",
+    "definition": "to make a choice from a number of alternatives",
+    "language of origin": "Latin",
+    "word type": "verb",
+    "sentence usage": "Let our great and wise leader decide for us"
+  },
+  {
+    "word": "answer",
+    "definition": "a correct response or a reply to a question",
+    "language of origin": "Old English",
+    "word type": "noun",
+    "sentence usage": "Chocolate is the answer to all life's problems"
+  }
+ ]
