@@ -21,7 +21,7 @@ function GameScreen () {
 
     this.buttons.push(new Button(width/2 + 100, height /2 + 200 , 180, 50, "More info please",
         function() {
-            console.log("CLICKED");
+            window.speechSynthesis.speak(new SpeechSynthesisUtterance(gameScreen.game.currentWord));
         }
     ));
 
