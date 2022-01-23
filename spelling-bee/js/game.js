@@ -177,7 +177,7 @@ Game.prototype.processWord = function (w) {
     if (this.guess == this.currentWord) {
         this.guessing = false;
         this.score++;
-        window.speechSynthesis.speak(new SpeechSynthesisUtterance("Game over"));
+        window.speechSynthesis.speak(new SpeechSynthesisUtterance("Correct"));
     } else if (!this.currentWord.startsWith(this.guess)) {
         this.guessing = false;
     }
