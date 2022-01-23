@@ -4,6 +4,8 @@ function Button(x,y, width, height, text,onClick) {
     this.width = width;
     this.height = height;
     this.onClick = onClick;
+    this.bgCOLOR = color(0,0,0);
+    this.clickCOLOR = color(100,100,100);
     this.hover = false;
 }
 
@@ -31,6 +33,11 @@ Button.prototype.draw = function() {
     rectMode(CENTER);
     textAlign(CENTER);
     fill(0,0,0);
+    if (this.hover) {
+        fill(this.clickCOLOR);
+    }else {
+        fill(this.bgCOLOR);
+    }
     rect(this.pos.x, this.pos.y, this.width, this.height);
     fill(255,255,255);
     text(this.text, this.pos.x, this.pos.y);
