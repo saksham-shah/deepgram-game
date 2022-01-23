@@ -1,8 +1,4 @@
-Need to fix button repeating the word constantly
-
-Edit buttons 
-
-Only record when button held
+Edit buttons
 
 Game over screen needs to show where player went wrong (maybe have correct spelling underneath or use green and red colouring)
 

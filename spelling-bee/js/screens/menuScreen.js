@@ -31,7 +31,7 @@ MenuScreen.prototype.update = function() {
 MenuScreen.prototype.draw = function() {
     
     push();
-    background(30,200,130);
+    background(0,55,115);
     textSize(50);
     textAlign(CENTER);
     text("SPELLING BEE TRAINER!", width/2, height / 4);

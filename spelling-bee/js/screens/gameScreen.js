@@ -80,7 +80,7 @@ GameScreen.prototype.update = function() {
 
 GameScreen.prototype.draw = function() {
     push();
-    background(30,200,130);
+    background(0,55,115);
     textSize(50);
     textAlign(CENTER);
 
