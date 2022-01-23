@@ -192,7 +192,7 @@ Game.prototype.draw = function () {
     textSize(20);
     fill(255);
     if (!this.guessing) {
-        text("Press enter", width/2, height * 0.7)
+        text("Press Enter for the next word!", width/2, height * 0.7)
     } else if (this.recording) {
         text("Speak now", width/2, height * 0.7)
     }

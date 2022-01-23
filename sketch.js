@@ -60,11 +60,16 @@ const CONSTANTS = {
     PLAYER_SIZE: 25
 }
 
+let words = [];
 
 function setup() {
     createCanvas(CONSTANTS.WIDTH, CONSTANTS.HEIGHT);
 
+    words = wordsString.split("\n");
+
     player = new Player(CONSTANTS.WIDTH / 2);
+
+    console.log(words);
 }
 
 function draw() {
@@ -75,5 +80,5 @@ function draw() {
 }
 
 function getNewWord() {
-    return "random";
+    return words[Math.floor(Math.random() * words.length)];
 }
