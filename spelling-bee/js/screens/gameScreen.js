@@ -23,7 +23,7 @@ function GameScreen () {
         }
     ));
 
-    this.buttons.push(new Button(width/2 + 100, height - 115, 180, 50, "Repeat Word Please",
+    this.buttons.push(new Button(width/2 + 100, height - 115, 180, 50, "Repeat word",
         function() {
             window.speechSynthesis.speak(new SpeechSynthesisUtterance(gameScreen.game.currentWord));
         }
