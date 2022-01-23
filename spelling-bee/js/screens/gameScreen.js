@@ -46,15 +46,15 @@ function GameScreen () {
     this.buttons.push(new Button(width/2 + 100, height /2 + 270 , 180, 50, "Type of word?",
         function() {
             if (!gameScreen.game.recording && gameScreen.game.guessing) {
-                window.speechSynthesis.speak(new SpeechSynthesisUtterance(gameScreen.game.currentLanguageOfOrigin));
+                window.speechSynthesis.speak(new SpeechSynthesisUtterance(gameScreen.game.currentWordType));
             }
         }
     ));
 
-    this.buttons.push(new Button(width/2 + 300, height /2 + 270 , 180, 50, "Example of sentence",
+    this.buttons.push(new Button(width/2 + 300, height /2 + 270 , 180, 50, "Example of sentence?",
         function() {
             if (!gameScreen.game.recording && gameScreen.game.guessing) {
-                window.speechSynthesis.speak(new SpeechSynthesisUtterance(gameScreen.game.currentLanguageOfOrigin));
+                window.speechSynthesis.speak(new SpeechSynthesisUtterance(gameScreen.game.currentSentenceExample));
             }
         }
     ));
@@ -63,7 +63,7 @@ function GameScreen () {
 }
 
 GameScreen.prototype.start = function (difficulty) {
-    this.game = new Game(difficulty, words, 5);
+    this.game = new Game(difficulty, difficulty == 0 ? easyWords : words, 5);
     screen = gameScreen;   
 }
 
