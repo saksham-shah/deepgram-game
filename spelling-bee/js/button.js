@@ -6,7 +6,17 @@ function Button(x,y, width, height, text,onClick) {
     this.onClick = onClick;
     this.bgCOLOR = color(0,0,0);
     this.clickCOLOR = color(100,100,100);
+    this.disabledCOLOR = color(0,0,0,150);
     this.hover = false;
+    this.active = true;
+}
+
+Button.prototype.activate = function () {
+    this.active = true;
+}
+
+Button.prototype.disable = function () {
+    this.active = false;
 }
 
 
@@ -24,7 +34,7 @@ Button.prototype.update = function () {
 }
 
 Button.prototype.mouseClicked = function () {
-    if (this.hover) {
+    if (this.hover && this.active) {
         this.onClick();
     }
 }
@@ -33,11 +43,18 @@ Button.prototype.draw = function() {
     rectMode(CENTER);
     textAlign(CENTER);
     fill(0,0,0);
-    if (this.hover) {
-        fill(this.clickCOLOR);
-    }else {
-        fill(this.bgCOLOR);
+    if (this.active) {
+        if (this.hover) {
+            fill(this.clickCOLOR);
+        }else {
+            fill(this.bgCOLOR);
+        }
+    } 
+    else {
+        fill(this.disabledCOLOR);
     }
+    
+    
     rect(this.pos.x, this.pos.y, this.width, this.height);
     fill(255,255,255);
     text(this.text, this.pos.x, this.pos.y);
