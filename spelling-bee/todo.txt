@@ -1,0 +1,19 @@
+Need to fix button repeating the word constantly
+
+Edit buttons 
+
+Only record when button held
+
+Game over screen needs to show where player went wrong (maybe have correct spelling underneath or use green and red colouring)
+
+Let people know audio required at start of game (or have instructions tab)
+
+IF there is still a lot of time - make player ask for definition rather than
+
+Changelog:
+Edited constructor of Game() to include wordlist parameter
+Renamed words parameter in Game() to numOfQuestions to avoid confusion
+Changed game.getWord() to return the wordIndex'th element of wordlist
+Added new functions game.getDefinition(), game.getLanguageOfOrigin(), game.getWordType() and game.getSentenceExample(), as well as the necessary variables storing them
+Added comment about needing to shuffle wordlist
+Changed button name from More INformation to definition (to test accessing word object)

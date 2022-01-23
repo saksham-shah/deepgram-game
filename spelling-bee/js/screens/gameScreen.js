@@ -15,21 +15,39 @@ function GameScreen () {
 
     this.buttons.push(new Button(width/2 - 100, height /2 + 200, 180, 50, "Repeat Word Please",
         function() {
-            console.log("CLICKED");
-        }
-    ));
-
-    this.buttons.push(new Button(width/2 + 100, height /2 + 200 , 180, 50, "More info please",
-        function() {
             window.speechSynthesis.speak(new SpeechSynthesisUtterance(gameScreen.game.currentWord));
         }
     ));
+
+    this.buttons.push(new Button(width/2 + 100, height /2 + 200 , 180, 50, "Definition?",
+        function() {
+            window.speechSynthesis.speak(new SpeechSynthesisUtterance("The definition is " + gameScreen.game.currentDefinition));
+        }
+    ));
+
+/*     this.buttons.push(new Button(width/2 + 100, height /2 + 200 , 180, 50, "Language of origin?",
+        function() {
+            window.speechSynthesis.speak(new SpeechSynthesisUtterance(gameScreen.game.currentLanguageOfOrigin));
+        }
+    ));
+
+    this.buttons.push(new Button(width/2 + 100, height /2 + 200 , 180, 50, "Type of word?",
+        function() {
+            window.speechSynthesis.speak(new SpeechSynthesisUtterance(gameScreen.game.currentLanguageOfOrigin));
+        }
+    ));
+
+    this.buttons.push(new Button(width/2 + 100, height /2 + 200 , 180, 50, "Example of sentence",
+        function() {
+            window.speechSynthesis.speak(new SpeechSynthesisUtterance(gameScreen.game.currentLanguageOfOrigin));
+        }
+    )); */
 
     
 }
 
 GameScreen.prototype.start = function (difficulty) {
-    this.game = new Game(difficulty, 5);
+    this.game = new Game(difficulty, words, 5);
     screen = gameScreen;   
 }
 
@@ -63,7 +81,7 @@ GameScreen.prototype.draw = function() {
     //Draw Score
     text("Score: " + this.game.score, 3 * width/4, height / 4);
     
-    text("Word " + (this.game.wordIndex + 1) + " / " + this.game.words, width/4, height/4);
+    text("Word " + (this.game.wordIndex + 1) + " / " + this.game.numOfQuestions, width/4, height/4);
 
     pop();
 
